@@ -290,7 +290,10 @@ int main(void) {
       // ####### MIXER #######
       // cmdR = CLAMP((int)(speed * SPEED_COEFFICIENT -  steer * STEER_COEFFICIENT), INPUT_MIN, INPUT_MAX);
       // cmdL = CLAMP((int)(speed * SPEED_COEFFICIENT +  steer * STEER_COEFFICIENT), INPUT_MIN, INPUT_MAX);
-      mixerFcn(speed << 4, steer << 4, &cmdR, &cmdL);   // This function implements the equations above
+      //mixerFcn(speed << 4, steer << 4, &cmdR, &cmdL);   // This function implements the equations above
+      cmdL = steer;  // ADC1
+      cmdR = speed;  // ADC2
+
 
       // ####### SET OUTPUTS (if the target change is less than +/- 100) #######
       if ((cmdL > cmdL_prev-100 && cmdL < cmdL_prev+100) && (cmdR > cmdR_prev-100 && cmdR < cmdR_prev+100)) {
